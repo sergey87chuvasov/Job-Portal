@@ -5,6 +5,7 @@ import connectDB from './config/db.js'
 import './config/instrument.js'
 import * as Sentry from "@sentry/node";
 import { clerkWebhooks } from './controllers/webhooks.js'
+import companyRoutes from './routes/companyRoutes.js'
 
 
 const app = express()
@@ -24,6 +25,7 @@ app.get("/debug-sentry", function mainHandler(req, res) {
   });
 
 app.post('/webhooks', clerkWebhooks)
+app.use('api/company', companyRoutes)
   
 
 // PORT
